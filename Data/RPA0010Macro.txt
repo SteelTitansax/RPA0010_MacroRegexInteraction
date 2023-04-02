@@ -1,0 +1,49 @@
+
+
+Sub try()
+
+   Call RPA0010SteeringData("C:\Temp\RPA00010_DataOrigin", "RPA0010_SteeringData.xlsx")
+
+End Sub
+
+
+Sub RPA0010SteeringData(in_strReportPath As String, in_Filename As String)
+
+'RPA0010Macro Macro
+
+'Filter records of Columns based on the data item in Column Price and save excel file in bulk
+
+'Variable Declarations
+
+Dim Price(2) As String
+Dim Path As String
+Dim OperationalSheet As String
+
+Price(0) = "1"
+Price(1) = "0,75"
+Price(2) = "0,5"
+
+OperationalSheet = "Products100"
+'Open Workbook
+
+Set wb1 = Workbooks.Open(Filename:=in_strReportPath & "\" & in_Filename)
+
+
+'Filter by Price
+    For Index = 0 To 2
+        Workbooks(in_Filename).Activate
+        Worksheets(OperationalSheet).Activate
+        ActiveSheet.Range("$A$1:$F$101").AutoFilter
+        'Filter by Price
+        ActiveSheet.Range("$A$1:$F$101").AutoFilter Field:=3, Criteria1:=Price(Index)
+        'Save Workbook
+        Set NewBook = Workbooks.Add
+        Workbooks("RPA0010_SteeringData.xlsx").Worksheets(OperationalSheet).Range("A1:K200").Copy
+        NewBook.Worksheets("Hoja1").Range("A1").PasteSpecial (xlPasteValues)
+        NewBook.SaveAs Filename:=in_strReportPath & "\" & OperationalSheet + "_" + CStr(Price(Index))
+        NewBook.Close
+   
+    Next
+wb1.Close    
+End Sub
+
