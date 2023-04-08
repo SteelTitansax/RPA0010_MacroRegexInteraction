@@ -5,7 +5,7 @@
     <x:Property Name="in_strTempPath" Type="InArgument(x:String)" />
     <x:Property Name="in_inputFile" Type="InArgument(x:String)" />
   </x:Members>
-  <sap:VirtualizedContainerService.HintSize>954.6666666666666,3270.6666666666665</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>620,1992.6666666666667</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="56">
@@ -127,7 +127,7 @@
       <AssemblyReference>System.Text.RegularExpressions</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Dispatcher" sap:VirtualizedContainerService.HintSize="630,2009.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_36">
+  <Sequence DisplayName="Dispatcher" sap:VirtualizedContainerService.HintSize="630,1928" sap2010:WorkflowViewState.IdRef="Sequence_36">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="dtSteeringData" />
       <Variable x:TypeArguments="scg:IEnumerable(ui:QueueItem)" Name="queueOldQueueItems" />
@@ -166,29 +166,21 @@
         <InArgument x:TypeArguments="x:Int32" />
       </ui:DeleteQueueItems.TimeoutMS>
     </ui:DeleteQueueItems>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="RunMacro.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="568,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="RunMacro.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="RunMacro.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="568,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Utils\RunMacro.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-          <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_Mode">
-          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Mode" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_strTempPath">
-          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_strTempPath" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_inputFile">
-          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_inputFile" />
-        </InArgument>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_Mode">[in_Mode]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_strTempPath">[in_strTempPath]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_inputFile">[in_inputFile]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <Sequence DisplayName="Regex Fetching" sap:VirtualizedContainerService.HintSize="568,1102" sap2010:WorkflowViewState.IdRef="Sequence_49">
+    <Sequence DisplayName="Regex Fetching" sap:VirtualizedContainerService.HintSize="568,1020.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_49">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:ForEachFileX DisplayName="For Each File in Folder" Folder="[in_Config(&quot;Temp_Path&quot;).ToString]" sap:VirtualizedContainerService.HintSize="506,991.3333333333334" sap2010:WorkflowViewState.IdRef="ForEachFileX_1" IncludeSubDirectories="False" OrderBy="NameAscFirst" SkipFolderWithoutPermission="False">
+      <ui:ForEachFileX DisplayName="For Each File in Folder" Folder="[in_Config(&quot;Temp_Path&quot;).ToString]" sap:VirtualizedContainerService.HintSize="506,910" sap2010:WorkflowViewState.IdRef="ForEachFileX_1" IncludeSubDirectories="False" OrderBy="NameAscFirst" SkipFolderWithoutPermission="False">
         <ui:ForEachFileX.Body>
           <ActivityAction x:TypeArguments="si:FileInfo, x:Int32">
             <ActivityAction.Argument1>
@@ -197,7 +189,7 @@
             <ActivityAction.Argument2>
               <DelegateInArgument x:TypeArguments="x:Int32" Name="CurrentIndex" />
             </ActivityAction.Argument2>
-            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="472,729.3333333333334" sap2010:WorkflowViewState.IdRef="Sequence_57">
+            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="472,648" sap2010:WorkflowViewState.IdRef="Sequence_57">
               <Sequence.Variables>
                 <Variable x:TypeArguments="x:Object" Name="objFileNameDetect" />
                 <Variable x:TypeArguments="x:String" Name="strMatchResult" />
@@ -208,7 +200,7 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <ui:Matches BuilderPattern="^Products100" FirstMatch="[strMatchResult]" sap:VirtualizedContainerService.HintSize="410,60" sap2010:WorkflowViewState.IdRef="Matches_1" Input="[currentFile.Name.ToString]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;ADV&quot;,&quot;OperationName&quot;:&quot;Advanced&quot;,&quot;OperationValue&quot;:&quot;^Products100&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="^Products100" RegexOption="IgnoreCase, Compiled" />
-              <If Condition="[len(strMatchResult) &gt; 0]" sap:VirtualizedContainerService.HintSize="410,518.6666666666666" sap2010:WorkflowViewState.IdRef="If_2">
+              <If Condition="[len(strMatchResult) &gt; 0]" sap:VirtualizedContainerService.HintSize="410,437.3333333333333" sap2010:WorkflowViewState.IdRef="If_2">
                 <If.Then>
                   <Sequence sap:VirtualizedContainerService.HintSize="376,285.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_58">
                     <sap:WorkflowViewStateService.ViewState>
